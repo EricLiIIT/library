@@ -1,0 +1,35 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  width: 80vw;
+  display: grid;
+  gap: 2rem;
+  /* grid-template-rows: 0.3fr 0.2fr 0.5fr;
+  grid-template-columns: 0.2fr 0.6fr 0.2fr; */
+  grid-template-areas: "modal modal modal" "sort sort sort" "book-container book-container book-container";
+}
+
+.sort {
+  grid-area: sort;
+}
+
+.book-container {
+  display: grid;
+  gap: 2rem;
+  grid-area: book-container;
+}
+
+.book-container.row {
+  display: grid;
+}
+
+.book-container.card {
+  grid-template-columns: repeat(4, 0.4fr);
+}

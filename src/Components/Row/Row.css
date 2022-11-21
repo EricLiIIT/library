@@ -1,0 +1,22 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.row {
+  display: flex;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.title {
+  flex: 1;
+}
+
+.author {
+  flex: 0.5;
+}
+
+.pages {
+  flex: 0.1;
+}
