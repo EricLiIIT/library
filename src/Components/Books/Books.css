@@ -23,3 +23,9 @@ button:hover {
   background-color: #bdbdbd;
   transition: 0.3s;
 }
+
+.book-container.card > .add-book {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
