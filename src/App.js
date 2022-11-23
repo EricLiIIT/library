@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 
 function App() {
   const [view, setView] = useState("row");
-  const [newBook, setNewBook] = useState(false);
+  const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
 
   function handleBookView(view) {
@@ -42,9 +42,10 @@ function App() {
 
   function showBookForm(book) {
     // Show form for new book
-    if (newBook === false) {
-      setNewBook(true);
+    if (bookFormViewable === false) {
+      setBookFormViewable(true);
     }
+    console.log(bookFormViewable);
   }
 
   function addBook(book) {
@@ -54,9 +55,10 @@ function App() {
       return [newBook, ...prevBooks];
     });
 
-    if (newBook === true) {
-      setNewBook(false);
+    if (bookFormViewable === true) {
+      setBookFormViewable(false);
     }
+    console.log(bookFormViewable);
   }
 
   let showBooks = function () {
@@ -78,7 +80,7 @@ function App() {
       <h1>Library App</h1>
       <Sort setView={handleBookView} sort={sort} />
       <Books view={view} books={library} add={showBookForm} />
-      {newBook ? <NewBook add={addBook} /> : null}
+      {bookFormViewable ? <NewBook add={addBook} /> : null}
     </div>
   );
 }
