@@ -36,16 +36,10 @@ function App() {
   let b4 = new Book("One up on wallstreet", "Peter Lynch", 400, true);
   let b5 = new Book("Clockwork Orange", "Someone", 200, false);
 
-  // let myLib = [b1, b2, b3, b4, b5];
-
-  // setLibrary([...myLib]);
-
   function showBookForm(book) {
-    // Show form for new book
     if (bookFormViewable === false) {
       setBookFormViewable(true);
     }
-    console.log(bookFormViewable);
   }
 
   function addBook(book) {
@@ -58,7 +52,6 @@ function App() {
     if (bookFormViewable === true) {
       setBookFormViewable(false);
     }
-    console.log(bookFormViewable);
   }
 
   let showBooks = function () {
@@ -66,14 +59,12 @@ function App() {
   };
 
   function sort(sorted, myLibrary) {
-    // let sortedLibrary = myLibrary.map()
     console.log(sorted);
   }
 
-  // useEffect(() => {
-  //   let myLib = [b1, b2, b3, b4, b5];
-  //   setLibrary(...myLib);
-  // });
+  useEffect(() => {
+    setLibrary([b1, b2, b3, b4, b5]);
+  }, []);
 
   return (
     <div className="App" id="App">
