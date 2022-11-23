@@ -1,0 +1,20 @@
+.form-container {
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.add-book-form {
+  max-width: 300px;
+}
+
+.add-book-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  padding: 1rem;
+}

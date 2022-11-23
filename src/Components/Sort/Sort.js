@@ -14,7 +14,7 @@ export default function Sort(props) {
   }
   return (
     <div className="sort">
-      <form>
+      <form className="toolbar">
         <select name="sort" id="sort" onChange={sort}>
           <option value="Read">Read</option>
           <option value="Unread">Unread</option>

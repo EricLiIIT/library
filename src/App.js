@@ -2,10 +2,13 @@ import "./App.css";
 import "./Components/Sort/Sort";
 import Sort from "./Components/Sort/Sort";
 import Books from "./Components/Books/Books";
-import { useState } from "react";
+import NewBook from "./Components/Books/NewBook";
+import { useEffect, useState } from "react";
 
 function App() {
   const [view, setView] = useState("row");
+  const [newBook, setNewBook] = useState(false);
+  const [library, setLibrary] = useState([]);
 
   function handleBookView(view) {
     setView(view);
@@ -33,25 +36,49 @@ function App() {
   let b4 = new Book("One up on wallstreet", "Peter Lynch", 400, true);
   let b5 = new Book("Clockwork Orange", "Someone", 200, false);
 
-  let myLibrary = [b1, b2, b3, b4, b5];
+  // let myLib = [b1, b2, b3, b4, b5];
 
-  function addBookToLibrary() {
-    // Add Book to Library
+  // setLibrary([...myLib]);
+
+  function showBookForm(book) {
+    // Show form for new book
+    if (newBook === false) {
+      setNewBook(true);
+    }
+  }
+
+  function addBook(book) {
+    console.log(book);
+    let newBook = new Book(book.title, book.author, book.pages, book.read);
+    setLibrary((prevBooks) => {
+      return [newBook, ...prevBooks];
+    });
+
+    if (newBook === true) {
+      setNewBook(false);
+    }
   }
 
   let showBooks = function () {
-    myLibrary.map();
+    library.map();
   };
 
   function sort(sorted, myLibrary) {
     // let sortedLibrary = myLibrary.map()
     console.log(sorted);
   }
+
+  // useEffect(() => {
+  //   let myLib = [b1, b2, b3, b4, b5];
+  //   setLibrary(...myLib);
+  // });
+
   return (
-    <div className="App">
+    <div className="App" id="App">
       <h1>Library App</h1>
       <Sort setView={handleBookView} sort={sort} />
-      <Books view={view} books={myLibrary} />
+      <Books view={view} books={library} add={showBookForm} />
+      {newBook ? <NewBook add={addBook} /> : null}
     </div>
   );
 }

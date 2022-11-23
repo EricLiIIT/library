@@ -11,6 +11,11 @@ export default function Books(props) {
   //   setRow(!row);
   // };
 
+  function handleSubmit(event) {
+    event.preventDefault();
+    props.add(event);
+  }
+
   return (
     <div
       className={
@@ -25,7 +30,7 @@ export default function Books(props) {
             return <Card book={book} />;
           })}
       <div className="add-book">
-        <form action="submit">
+        <form onSubmit={handleSubmit}>
           <button>+ Add a book</button>
         </form>
       </div>
