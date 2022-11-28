@@ -24,10 +24,10 @@ export default function Books(props) {
     >
       {props.view === "row"
         ? props.books.map((book) => {
-            return <Row book={book} />;
+            return <Row key={book.key} book={book} />;
           })
         : props.books.map((book) => {
-            return <Card book={book} />;
+            return <Card key={book.key} book={book} />;
           })}
       <div className="add-book">
         <form onSubmit={handleSubmit}>

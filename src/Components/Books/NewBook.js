@@ -8,7 +8,10 @@ export default function NewBook(props) {
   const [read, setRead] = useState(false);
 
   function addBook() {
-    props.add({ title, author, pages, read });
+    if (title.length > 0 && author.length > 0 && pages > 0) {
+      let key = Math.random().toString() + title + author;
+      props.add({ key, title, author, pages, read });
+    }
   }
 
   function cancelAddBook() {
