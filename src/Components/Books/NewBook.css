@@ -12,6 +12,8 @@
 }
 
 .add-book-form {
+  background-color: #b6b6b6;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

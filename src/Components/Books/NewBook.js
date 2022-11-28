@@ -7,15 +7,18 @@ export default function NewBook(props) {
   const [pages, setPages] = useState(0);
   const [read, setRead] = useState(false);
 
-  function addBook(event) {
-    event.preventDefault();
+  function addBook() {
     props.add({ title, author, pages, read });
+  }
+
+  function cancelAddBook() {
+    props.hideForm(false);
   }
 
   return (
     <div className="form-container">
       <div className="add-book-form">
-        <form onSubmit={addBook} className="add-book-form">
+        <form className="add-book-form">
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -48,7 +51,12 @@ export default function NewBook(props) {
             onChange={(event) => setRead(event.target.value)}
             value={read}
           />
-          <button>Add Book</button>
+          <button type="button" onClick={cancelAddBook}>
+            Cancel
+          </button>
+          <button type="button" onClick={addBook}>
+            Add Book
+          </button>
         </form>
       </div>
     </div>

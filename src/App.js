@@ -54,6 +54,10 @@ function App() {
     }
   }
 
+  function hideForm() {
+    setBookFormViewable(false);
+  }
+
   let showBooks = function () {
     library.map();
   };
@@ -68,10 +72,16 @@ function App() {
 
   return (
     <div className="App" id="App">
-      <h1>Library App</h1>
+      <h1>Library</h1>
       <Sort setView={handleBookView} sort={sort} />
       <Books view={view} books={library} add={showBookForm} />
-      {bookFormViewable ? <NewBook add={addBook} /> : null}
+      {bookFormViewable ? (
+        <NewBook
+          add={addBook}
+          formView={bookFormViewable}
+          hideForm={hideForm}
+        />
+      ) : null}
     </div>
   );
 }
