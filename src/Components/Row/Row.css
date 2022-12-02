@@ -15,3 +15,9 @@
 .pages {
   flex: 0.1;
 }
+
+.trash {
+  display: flex;
+  align-items: center;
+  flex: 0.05;
+}

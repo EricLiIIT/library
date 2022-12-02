@@ -3,12 +3,14 @@ import "./Components/Sort/Sort";
 import Sort from "./Components/Sort/Sort";
 import Books from "./Components/Books/Books";
 import NewBook from "./Components/Books/NewBook";
+import Alert from "./Components/Books/InvalidFormAlert";
 import { useEffect, useState } from "react";
 
 function App() {
   const [view, setView] = useState("row");
   const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
+  const [formIsValid, setFormIsValid] = useState(true);
 
   function handleBookView(view) {
     setView(view);
@@ -52,7 +54,13 @@ function App() {
 
   function addBook(book) {
     console.log(book);
-    let newBook = new Book(book.title, book.author, book.pages, book.read);
+    let newBook = new Book(
+      book.key,
+      book.title,
+      book.author,
+      book.pages,
+      book.read
+    );
     setLibrary((prevBooks) => {
       return [newBook, ...prevBooks];
     });
@@ -64,6 +72,7 @@ function App() {
 
   function hideForm() {
     setBookFormViewable(false);
+    setFormIsValid(true);
   }
 
   let showBooks = function () {
@@ -72,6 +81,10 @@ function App() {
 
   function sort(sorted, myLibrary) {
     console.log(sorted);
+  }
+
+  function handleInvalidForm(formValidity) {
+    setFormIsValid(formValidity);
   }
 
   useEffect(() => {
@@ -88,8 +101,15 @@ function App() {
           add={addBook}
           formView={bookFormViewable}
           hideForm={hideForm}
+          handleInvalidForm={handleInvalidForm}
         />
       ) : null}
+      {formIsValid ? null : (
+        <Alert
+          formIsValid={formIsValid}
+          handleInvalidForm={handleInvalidForm}
+        />
+      )}
     </div>
   );
 }
