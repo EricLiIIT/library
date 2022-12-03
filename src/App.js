@@ -1,7 +1,7 @@
 import "./App.css";
 import "./Components/Sort/Sort";
 import Sort from "./Components/Sort/Sort";
-import Books from "./Components/Books/Books";
+import BookContainer from "./Components/Books/BookContainer";
 import NewBook from "./Components/Books/NewBook";
 import Alert from "./Components/Books/InvalidFormAlert";
 import { useEffect, useState } from "react";
@@ -66,6 +66,8 @@ function App() {
     });
 
     if (bookFormViewable === true) {
+      setFormIsValid(true);
+      console.log("error message should be gone if it ever appeared");
       setBookFormViewable(false);
     }
   }
@@ -95,7 +97,7 @@ function App() {
     <div className="App" id="App">
       <h1>Library</h1>
       <Sort setView={handleBookView} sort={sort} />
-      <Books view={view} books={library} add={showBookForm} />
+      <BookContainer view={view} books={library} add={showBookForm} />
       {bookFormViewable ? (
         <NewBook
           add={addBook}

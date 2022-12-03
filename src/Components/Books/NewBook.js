@@ -6,17 +6,13 @@ export default function NewBook(props) {
   const [author, setAuthor] = useState("");
   const [pages, setPages] = useState(0);
   const [read, setRead] = useState(false);
-  const [formIsValid, setFormIsValid] = useState(false);
+  const [formIsValid, setFormIsValid] = useState(true);
 
   function addBook() {
     if (title.length > 0 && author.length > 0 && pages > 0) {
       let key = Math.random().toString() + title + author;
       props.add({ key, title, author, pages, read });
-      setFormIsValid(true);
-      console.log("is the form valid?", formIsValid);
-      props.handleInvalidForm(formIsValid);
     } else {
-      // setFormIsValid(false);
       props.handleInvalidForm(formIsValid);
     }
   }
@@ -26,8 +22,8 @@ export default function NewBook(props) {
   }
 
   useEffect(() => {
-    setFormIsValid(formIsValid);
-  }, [formIsValid]);
+    setFormIsValid(!formIsValid);
+  }, [title, author, pages]);
 
   return (
     <div className="form-container">
