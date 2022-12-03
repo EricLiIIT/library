@@ -1,6 +1,5 @@
 import React from "react";
-import Row from "../Row/Row";
-import Card from "../Card/Card";
+import Book from "../Book/Book";
 import "./Books.css";
 import { useState } from "react";
 
@@ -22,13 +21,17 @@ export default function Books(props) {
         props.view === "row" ? "book-container row" : "book-container card"
       }
     >
-      {props.view === "row"
-        ? props.books.map((book) => {
-            return <Row key={book.key} book={book} />;
-          })
-        : props.books.map((book) => {
-            return <Card key={book.key} book={book} />;
-          })}
+      {props.books.map((book) => {
+        return (
+          <Book
+            className={props.view === "row" ? "row" : "card"}
+            key={book.key}
+            book={book}
+            view={props.view}
+          />
+        );
+      })}
+
       <div className="add-book">
         <form onSubmit={handleSubmit}>
           <button>+ Add a book</button>

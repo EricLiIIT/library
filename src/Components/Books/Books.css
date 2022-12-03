@@ -29,3 +29,36 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+
+/* row styles */
+.row {
+  display: flex;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.title {
+  flex: 1;
+}
+
+.author {
+  flex: 0.5;
+}
+
+.pages {
+  flex: 0.1;
+}
+
+.trash {
+  display: flex;
+  align-items: center;
+  flex: 0.05;
+  cursor: pointer;
+}
+
+/* card styles */
+.card {
+  display: grid;
+  border-style: solid;
+  border-width: 2px;
+}
