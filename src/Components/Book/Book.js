@@ -3,7 +3,7 @@ import { BiTrashAlt } from "react-icons/bi";
 
 export default function Book(props) {
   function handleDelete() {
-    console.log("Deleting");
+    props.handleDelete();
   }
 
   return (

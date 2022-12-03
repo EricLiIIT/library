@@ -89,6 +89,13 @@ function App() {
     setFormIsValid(formValidity);
   }
 
+  function deleteBook(bookKey) {
+    console.log(`app.js: deleting ${bookKey} book`);
+    const updatedLibrary = [...library];
+    updatedLibrary.splice(bookKey, 1);
+    setLibrary(updatedLibrary);
+  }
+
   useEffect(() => {
     setLibrary([b1, b2, b3, b4, b5]);
   }, []);
@@ -97,7 +104,12 @@ function App() {
     <div className="App" id="App">
       <h1>Library</h1>
       <Sort setView={handleBookView} sort={sort} />
-      <BookContainer view={view} books={library} add={showBookForm} />
+      <BookContainer
+        view={view}
+        books={library}
+        add={showBookForm}
+        deleteBook={deleteBook}
+      />
       {bookFormViewable ? (
         <NewBook
           add={addBook}
