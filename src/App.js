@@ -12,6 +12,17 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
 
+  useEffect(() => {
+    const localData = localStorage.getItem("books");
+    if (localData != null) {
+      setLibrary(JSON.parse(localData));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("library", JSON.stringify(library));
+  }, [library]);
+
   function handleBookView(view) {
     setView(view);
   }
