@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import { BiTrashAlt, BiSolidCheckboxChecked, BiCheckbox, BiCheckboxChecked } from "react-icons/bi";
 
 export default function Book(props) {
@@ -6,9 +6,7 @@ export default function Book(props) {
     props.handleDelete();
   }
 
-  function handleCheck() {
-    return 
-  }
+  const [readStatus, setReadStatus] = useState(props.book.read)
   return (
     <div className={props.view === "row" ? "row" : "card"}>
       <div className="title">{props.book.title}</div>
@@ -16,7 +14,9 @@ export default function Book(props) {
       <div className="pages">{props.book.pages}</div>
       <div className="readStatus">Read</div>
       <div className="checkbox">
-        {(props.book.read) ? <BiCheckbox/> : <BiCheckboxChecked/>}
+        {(readStatus) ? <BiCheckboxChecked onClick={() => setReadStatus(!readStatus)}/> : 
+        <BiCheckbox onClick={() => setReadStatus(!readStatus)}/>
+        }
       </div>
       <div className="trash">
         <BiTrashAlt onClick={handleDelete} />
