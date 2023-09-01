@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { BiTrashAlt, BiSolidCheckboxChecked, BiCheckbox, BiCheckboxChecked } from "react-icons/bi";
+import { BiTrashAlt, BiCheckbox, BiCheckboxChecked } from "react-icons/bi";
 
 export default function Book(props) {
   function handleDelete() {
@@ -12,9 +12,9 @@ export default function Book(props) {
       <div className="title">{props.book.title}</div>
       <div className="author">{props.book.author}</div>
       <div className="pages">{props.book.pages}</div>
-      <div className="readStatus">Read</div>
       <div className="checkbox">
-        {(readStatus) ? <BiCheckboxChecked onClick={() => setReadStatus(!readStatus)}/> : 
+        {(readStatus) ? 
+        <BiCheckboxChecked onClick={() => setReadStatus(!readStatus)}/> : 
         <BiCheckbox onClick={() => setReadStatus(!readStatus)}/>
         }
       </div>

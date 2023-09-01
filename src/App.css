@@ -1,45 +1,46 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .App {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  width: 80vw;
-  display: grid;
-  gap: 2rem;
-  grid-template-areas: "modal modal modal" "sort sort sort" "book-container book-container book-container";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    width: 80vw;
+    display: grid;
+    gap: 2rem;
+    max-width: 70rem;
+    grid-template-areas: "modal modal modal" "sort sort sort" "book-container book-container book-container";
 }
 
 .sort {
-  grid-area: sort;
+    grid-area: sort;
 }
 
 .book-container {
-  display: grid;
-  gap: 2rem;
-  grid-area: book-container;
+    display: grid;
+    gap: 2rem;
+    grid-area: book-container;
 }
 
 .book-container.row {
-  display: grid;
+    display: grid;
 }
 
 .book-container.card {
-  grid-template-columns: repeat(4, 0.4fr);
+    grid-template-columns: repeat(4, 0.4fr);
 }
 
 .error {
-  display: flex;
-  justify-content: center;
-  font-size: 12px;
-  color: red;
-  position: absolute;
-  left: 50vw;
-  top: 32vh;
-  transform: translate(-50%, -50%);
-  z-index: 1;
+    display: flex;
+    justify-content: center;
+    font-size: 12px;
+    color: red;
+    position: absolute;
+    left: 50vw;
+    top: 32vh;
+    transform: translate(-50%, -50%);
+    z-index: 1;
 }
