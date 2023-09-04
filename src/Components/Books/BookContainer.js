@@ -1,15 +1,8 @@
 import React from "react";
 import Book from "../Book/Book";
 import "./BookContainer.css";
-import { useState } from "react";
 
 export default function Books(props) {
-  // const [row, setRow] = useState(false);
-
-  // const handleView = () => {
-  //   setRow(!row);
-  // };
-
   function handleSubmit(event) {
     event.preventDefault();
     props.add(event);

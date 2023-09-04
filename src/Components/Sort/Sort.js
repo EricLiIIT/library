@@ -28,10 +28,6 @@ export default function Sort(props) {
           <option value="Unread">Unread</option>
           <option value="Page Count">Pages</option>
         </select>
-        {/* <select name="view" id="view" onChange={getView}>
-          <option value="row">Row</option>
-          <option value="card">Card</option>
-        </select> */}
       </form>
       <div className="view">
         {(rowView) ? 
