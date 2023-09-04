@@ -3,28 +3,46 @@ import { useState } from "react";
 import "./Sort.css";
 
 export default function Sort(props) {
-  const [view, setView] = useState();
+  const [rowView, setRowView] = useState(true);
 
-  function getView(event) {
-    props.setView(event.target.value);
+  function getView() {
+    console.log(`${rowView}`)
+    if (!rowView) {
+      setRowView(!rowView)
+      props.setView("row");
+    } else if(rowView) {
+      setRowView(!rowView)
+      props.setView("card")
+    }
   }
 
   function sort(event) {
     props.sort(event.target.value);
   }
+
   return (
-    <div className="sort">
-      <form className="toolbar">
+    <div className="sort toolbar">
+      <form>
         <select name="sort" id="sort" onChange={sort}>
           <option value="Read">Read</option>
           <option value="Unread">Unread</option>
           <option value="Page Count">Pages</option>
         </select>
-        <select name="view" id="view" onChange={getView}>
+        {/* <select name="view" id="view" onChange={getView}>
           <option value="row">Row</option>
           <option value="card">Card</option>
-        </select>
+        </select> */}
       </form>
+      <div className="view">
+        {(rowView) ? 
+          <button onClick={() => {
+            getView(setRowView(rowView))
+          }}>Card</button> :
+          <button onClick={() => {
+            getView(setRowView(rowView))
+          }}>Row</button>
+        }
+      </div>
     </div>
   );
 }
