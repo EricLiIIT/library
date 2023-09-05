@@ -1,7 +1,13 @@
 .toolbar {
     display: flex;
+    justify-content: space-around;
     padding: 0.5rem;
     align-items: center;
     border-style: solid;
     border-width: 2px;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-around;
 }

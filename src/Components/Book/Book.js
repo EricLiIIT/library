@@ -10,12 +10,13 @@ export default function Book(props) {
   return (
     <div className={props.view === "row" ? "row" : "card"}>
       <div className="title">{props.book.title}</div>
-      <div className="author">{props.book.author}</div>
-      <div className="pages">{props.book.pages}</div>
+      <div className="author">By: {props.book.author}</div>
+      <div className="pages">{props.book.pages} pages</div>
       <div className="checkbox">
+        <p>Read?</p>
         {(readStatus) ? 
-        <BiCheckboxChecked onClick={() => setReadStatus(!readStatus)}/> : 
-        <BiCheckbox onClick={() => setReadStatus(!readStatus)}/>
+        <BiCheckboxChecked size="25" onClick={() => setReadStatus(!readStatus)}/> : 
+        <BiCheckbox size="25" onClick={() => setReadStatus(!readStatus)}/>
         }
       </div>
       <div className="trash">

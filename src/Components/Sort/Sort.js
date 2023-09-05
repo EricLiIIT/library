@@ -22,13 +22,16 @@ export default function Sort(props) {
 
   return (
     <div className="sort toolbar">
-      <form>
-        <select name="sort" id="sort" onChange={sort}>
-          <option value="Read">Read</option>
-          <option value="Unread">Unread</option>
-          <option value="Page Count">Pages</option>
-        </select>
-      </form>
+      <div className="sort">
+        <p>Sort By:</p>
+        <form>
+          <select name="sort" id="sort" onChange={sort}>
+            <option value="Read">Read</option>
+            <option value="Unread">Unread</option>
+            <option value="Page Count">Pages</option>
+          </select>
+        </form>
+      </div>
       <div className="view">
         {(rowView) ? 
           <button onClick={() => {
