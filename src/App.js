@@ -4,7 +4,9 @@ import Sort from "./Components/Sort/Sort";
 import BookContainer from "./Components/Books/BookContainer";
 import NewBook from "./Components/Books/NewBook";
 import Alert from "./Components/Books/InvalidFormAlert";
+import Search from "./Components/Sort/Search";
 import { useEffect, useState } from "react";
+import { getBookData } from "./Services/GetBookData";
 
 function App() {
   const [view, setView] = useState("row");
@@ -107,6 +109,15 @@ function App() {
     setLibrary(updatedLibrary);
   }
 
+  function searchBook(event, title) {
+    event.preventDefault()
+    getBookData(title).then((response) => {
+      console.log(response)
+    }).catch((error) => {
+      console.log(`Error while getting books from API in "App.js": ${error}`)
+    })
+  }
+
   useEffect(() => {
     setLibrary([b1, b2, b3, b4, b5]);
   }, []);
@@ -115,6 +126,7 @@ function App() {
     <div className="App" id="App">
       <h1>Library</h1>
       <Sort setView={handleBookView} sort={sort} />
+      <Search searchBook={searchBook}/>
       <BookContainer
         view={view}
         books={library}
