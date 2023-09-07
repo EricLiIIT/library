@@ -1,0 +1,15 @@
+form {
+  display: flex;
+}
+
+form>*{
+  flex: 0.08;
+}
+
+input#title {
+  margin-left: 0.5rem;
+}
+
+button#search {
+  margin-left: 0.5rem;
+}

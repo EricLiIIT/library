@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Search.css"
 
 export default function SearchLibrary(props) {
   const [title, setTitle] = useState("");
@@ -22,7 +23,7 @@ export default function SearchLibrary(props) {
           value={title}
           onChange={handleInput} 
           />
-        <button onClick={search}>Search</button>
+        <button id="search" onClick={search}>Search</button>
       </form>
     </div>
     )
