@@ -12,7 +12,15 @@
     display: grid;
     gap: 2rem;
     max-width: 70rem;
-    grid-template-areas: "modal modal modal" "sort sort sort" "book-container book-container book-container";
+    grid-template-areas: 
+        "modal modal modal" 
+        "search search search"
+        "sort sort sort" 
+        "book-container book-container book-container";
+}
+
+.search {
+    grid-area: search;
 }
 
 .sort {

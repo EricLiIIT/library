@@ -12,7 +12,7 @@ export default function SearchLibrary(props) {
   }
 
   return (
-    <div className="SearchBar">
+    <div className="search">
       <form onSubmit={search}>
         <label htmlFor="title">Title:</label>
         <input 

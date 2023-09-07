@@ -125,8 +125,8 @@ function App() {
   return (
     <div className="App" id="App">
       <h1>Library</h1>
-      <Sort setView={handleBookView} sort={sort} />
       <Search searchBook={searchBook}/>
+      <Sort setView={handleBookView} sort={sort} />
       <BookContainer
         view={view}
         books={library}
@@ -135,12 +135,12 @@ function App() {
       />
       {bookFormViewable ? (
         <NewBook
-          add={addBook}
-          formView={bookFormViewable}
-          hideForm={hideForm}
-          handleInvalidForm={handleInvalidForm}
+        add={addBook}
+        formView={bookFormViewable}
+        hideForm={hideForm}
+        handleInvalidForm={handleInvalidForm}
         />
-      ) : null}
+        ) : null}
       {formIsValid ? null : (
         <Alert
           formIsValid={formIsValid}
