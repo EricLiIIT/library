@@ -29,17 +29,19 @@ function App() {
     setView(view);
   }
 
-  function Book(key, title, author, pages, read) {
-    this.key = key;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
+  class Book {
+    constructor(key, title, author, pages, read) {
+      this.key = key;
+      this.title = title;
+      this.author = author;
+      this.pages = pages;
+      this.read = read;
+    }
+    info() {
+      return `${this.title} by ${this.author}. ${this.pages}, ${this.read}`;
+    }
   }
 
-  Book.prototype.info = function () {
-    return `${this.title} by ${this.author}. ${this.pages}, ${this.read}`;
-  };
 
   let b1 = new Book(1, "Turtles all the way down", "Hank Green", 200, true);
   let b2 = new Book(
