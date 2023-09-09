@@ -14,6 +14,7 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const localData = localStorage.getItem("books");
@@ -111,17 +112,23 @@ function App() {
     setLibrary(updatedLibrary);
   }
 
-  function searchBook(event, title) {
-    event.preventDefault()
-    getBookData(title).then((response) => {
-      console.log(response.docs)
-      for (let i = 0; i <= 5; i++) {
-        searchResults.push(response.docs[i].title)
-      }
-      console.log(`First 5 books ${searchResults}`)
-    }).catch((error) => {
-      console.log(`Error while getting books from API in "App.js": ${error}`)
-    })
+  // function searchBook(event, title) {
+  //   event.preventDefault()
+  //   getBookData(title).then((response) => {
+  //     // console.log(response)
+  //     for (let i = 0; i <= 5; i++) {
+  //       searchResults.push(response.docs[i].title)
+  //     }
+  //     console.log(`First 5 books ${searchResults}`)
+  //     setSearchResults(searchResults)
+  //   }).catch((error) => {
+  //     console.log(`Error while getting books from API in "App.js": ${error}`)
+  //   })
+  // }
+
+  function handleSearchInput(event) {
+    console.log(event.target.value)
+    setSearchValue(event.target.value)
   }
 
   useEffect(() => {
@@ -131,7 +138,10 @@ function App() {
   return (
     <div className="App" id="App">
       <h1>Library</h1>
-      <Search searchBook={searchBook} searchResults={searchResults}/>
+      <Search 
+      // searchBook={searchBook} 
+        searchResults={searchResults}
+        handleSearchInput={handleSearchInput}/>
       <Sort setView={handleBookView} sort={sort} />
       <BookContainer
         view={view}
