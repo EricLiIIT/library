@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Search.css"
 
 export default function SearchLibrary(props) {
   const [title, setTitle] = useState("");
+  const [results, setResults] = useState();
+
+  // useEffect(() => {
+  //   console.log("Hello")
+  // }, [title])
 
   function search(event) {
     props.searchBook(event, title);
@@ -25,6 +30,13 @@ export default function SearchLibrary(props) {
           />
         <button id="search" onClick={search}>Search</button>
       </form>
+        <div className="search-results">
+        {props.searchResults.map((item, index) => {
+          return (
+          <p key={`${item}_${index}`}>{item}</p>
+          )
+        })}
+      </div>
     </div>
     )
 }

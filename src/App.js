@@ -13,6 +13,7 @@ function App() {
   const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
+  const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
     const localData = localStorage.getItem("books");
@@ -41,7 +42,6 @@ function App() {
       return `${this.title} by ${this.author}. ${this.pages}, ${this.read}`;
     }
   }
-
 
   let b1 = new Book(1, "Turtles all the way down", "Hank Green", 200, true);
   let b2 = new Book(
@@ -114,7 +114,11 @@ function App() {
   function searchBook(event, title) {
     event.preventDefault()
     getBookData(title).then((response) => {
-      console.log(response)
+      console.log(response.docs)
+      for (let i = 0; i <= 5; i++) {
+        searchResults.push(response.docs[i].title)
+      }
+      console.log(`First 5 books ${searchResults}`)
     }).catch((error) => {
       console.log(`Error while getting books from API in "App.js": ${error}`)
     })
@@ -127,7 +131,7 @@ function App() {
   return (
     <div className="App" id="App">
       <h1>Library</h1>
-      <Search searchBook={searchBook}/>
+      <Search searchBook={searchBook} searchResults={searchResults}/>
       <Sort setView={handleBookView} sort={sort} />
       <BookContainer
         view={view}
