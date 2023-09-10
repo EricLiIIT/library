@@ -1,22 +1,40 @@
-* {
+/* * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
 .App {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    width: 80vw;
-    display: grid;
+}
+
+.App>div>div, .App>div>div>div{
+    border-radius: 8px;
+}
+
+.interactive {
+    padding: 0 20rem 0rem 20rem;
     gap: 2rem;
-    max-width: 70rem;
+    display: grid;
     grid-template-areas: 
         "modal modal modal" 
         "search search search"
         "sort sort sort" 
         "book-container book-container book-container";
+}
+
+.modal {
+    grid-area: modal;
+    min-width: 100vw;
+    background-color: #fffbfb
+}
+
+.modal > h1 {
+    margin-top: 0;
+    padding: 2rem 20rem 2rem 20rem;
+    font-size: 4rem;
 }
 
 .search {

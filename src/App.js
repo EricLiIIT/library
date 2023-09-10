@@ -137,32 +137,36 @@ function App() {
 
   return (
     <div className="App" id="App">
-      <h1>Library</h1>
-      <Search 
-      // searchBook={searchBook} 
-        searchResults={searchResults}
-        handleSearchInput={handleSearchInput}/>
-      <Sort setView={handleBookView} sort={sort} />
-      <BookContainer
-        view={view}
-        books={library}
-        add={showBookForm}
-        deleteBook={deleteBook}
-      />
-      {bookFormViewable ? (
-        <NewBook
-        add={addBook}
-        formView={bookFormViewable}
-        hideForm={hideForm}
-        handleInvalidForm={handleInvalidForm}
+      <div className="modal">
+        <h1>Library</h1>
+      </div>
+      <div className="interactive">
+        <Search
+        // searchBook={searchBook}
+          searchResults={searchResults}
+          handleSearchInput={handleSearchInput}/>
+        <Sort setView={handleBookView} sort={sort} />
+        <BookContainer
+          view={view}
+          books={library}
+          add={showBookForm}
+          deleteBook={deleteBook}
         />
-        ) : null}
-      {formIsValid ? null : (
-        <Alert
-          formIsValid={formIsValid}
+        {bookFormViewable ? (
+          <NewBook
+          add={addBook}
+          formView={bookFormViewable}
+          hideForm={hideForm}
           handleInvalidForm={handleInvalidForm}
-        />
-      )}
+          />
+          ) : null}
+        {formIsValid ? null : (
+          <Alert
+            formIsValid={formIsValid}
+            handleInvalidForm={handleInvalidForm}
+          />
+        )}
+      </div>
     </div>
   );
 }
