@@ -1,8 +1,9 @@
 form {
   display: flex;
+  align-items: center;
 }
 
-form>*{
+form > *{
   flex: 0.08;
 }
 

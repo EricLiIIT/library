@@ -14,7 +14,7 @@ button {
     border-style: none;
     background-color: white;
     cursor: pointer;
-    padding: 0.2rem;
+    padding: 0.5rem;
     border-radius: 5px;
     transition: 0.3s;
 }

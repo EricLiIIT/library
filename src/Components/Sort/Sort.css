@@ -14,3 +14,7 @@
 .sort > * {
     margin: 0;
 }
+
+.sort > form > select{
+    margin-left: 0.3rem;
+}
