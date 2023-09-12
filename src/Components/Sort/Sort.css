@@ -10,3 +10,7 @@
 .sort {
     display: flex;
 }
+
+.sort > * {
+    margin: 0;
+}
