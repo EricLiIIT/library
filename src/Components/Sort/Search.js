@@ -13,16 +13,15 @@ export default function SearchLibrary(props) {
 
   function search(event, title) {
     event.preventDefault()
-    console.log(`Title in search ftn (Search.js) ${title}`)
-    setResults([])
     getBookData(title).then((response) => {
-      console.log(response.docs)
-      // let res = []
-      // for (let i = 0; i <= 5; i++) {
-      //   res.push(response.docs[i].title)
-      // }
-      // console.log(`First 5 books ${results}`)
-      // setResults(res)
+      let books = response.docs
+      let res = []
+      console.log(books)
+      for (const book in books) {
+        console.log(`in for loop: ${books[book].title}`)
+        res.push(books[book].title)
+      }
+      setResults(res)
     }).catch((error) => {
       console.log(`Error while getting books from API in "Search.js": ${error}`)
       // If error is throw, display that there are no results
@@ -30,14 +29,9 @@ export default function SearchLibrary(props) {
     })
   }
 
-  // function search(event) {
-  //   props.searchBook(event, title);
-  // }
-
   function handleInput(event) {
     search(event, event.target.value)
     setTitle(event.target.value)
-    console.log(`Title: ${event.target.value}`)
   }
 
   return (
