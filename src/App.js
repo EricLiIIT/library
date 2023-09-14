@@ -6,7 +6,7 @@ import NewBook from "./Components/Books/NewBook";
 import Alert from "./Components/Books/InvalidFormAlert";
 import Search from "./Components/Sort/Search";
 import { useEffect, useState } from "react";
-import { getBookData } from "./Services/GetBookData";
+// import { getBookData } from "./Services/GetBookData";
 
 function App() {
   const [view, setView] = useState("row");
@@ -59,7 +59,7 @@ function App() {
     300,
     true
   );
-  let b4 = new Book(5, "One up on wallstreet", "Peter Lynch", 400, true);
+  let b4 = new Book(5, "One up on Wallstreet", "Peter Lynch", 400, true);
   let b5 = new Book(6, "Clockwork Orange", "Someone", 200, false);
 
   function showBookForm(book) {
@@ -93,9 +93,9 @@ function App() {
     setFormIsValid(true);
   }
 
-  let showBooks = function () {
-    library.map();
-  };
+  // let showBooks = function () {
+  //   library.map();
+  // };
 
   function sort(sorted, myLibrary) {
     console.log(sorted);

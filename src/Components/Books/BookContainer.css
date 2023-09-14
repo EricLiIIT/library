@@ -10,8 +10,22 @@
 }
 
 button {
+    font-family: 
+        'Poppins', 
+        sans-serif, 
+        -apple-system, 
+        BlinkMacSystemFont, 
+        "Segoe UI", 
+        "Roboto", 
+        "Oxygen",
+        "Ubuntu", 
+        "Cantarell",
+        "Fira Sans",
+        "Droid Sans",
+        "Helvetica Neue",
+        sans-serif;
     border-style: none;
-    background-color: white;
+    background-color: #5fe05f;
     cursor: pointer;
     padding: 0.5rem;
     border-radius: 5px;
@@ -19,7 +33,7 @@ button {
 }
 
 button:hover {
-    background-color: #bdbdbd;
+    background-color: #63be63;
     transition: 0.3s;
 }
 
