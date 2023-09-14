@@ -7,10 +7,6 @@ export default function SearchLibrary(props) {
   const [results, setResults] = useState([]);
   const [error, setError] = useState(false);
 
-  // useEffect(() => {
-  //   console.log(props.searchResults)
-  // }, [props.searchResults])
-
   function search(event, title) {
     event.preventDefault()
     getBookData(title).then((response) => {
@@ -36,8 +32,8 @@ export default function SearchLibrary(props) {
 
   return (
     <div className="search">
-      <form>
-        <label htmlFor="title">Title:</label>
+      <form onSubmit={(event) => event.preventDefault()}>
+        <label htmlFor="title">Look for a book:</label>
         <input 
           type="search"
           name="title"
@@ -45,7 +41,6 @@ export default function SearchLibrary(props) {
           value={title}
           onChange={handleInput} 
           />
-        <button onClick={search} id="search">Search</button>
       </form>
       <div className="search-results">
         {!error ? results.map((item, index) => {

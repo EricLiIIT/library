@@ -3,10 +3,6 @@ form {
   align-items: center;
 }
 
-form > *{
-  flex: 0.08;
-}
-
 input#title {
   margin-left: 0.5rem;
 }
