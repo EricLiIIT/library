@@ -12,7 +12,6 @@ function App() {
   const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
-  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const localData = localStorage.getItem("books");
@@ -92,6 +91,7 @@ function App() {
   }
 
   function sort(sorted, myLibrary) {
+    // Unimplemented: todo - sort books
     console.log(sorted);
   }
 

@@ -3,6 +3,5 @@ export async function getBookData(title) {
   const url = `https://openlibrary.org/search.json?q=${formattedTitle}&limit=5`;
   const response = await fetch(url);
   const data = await response.json();
-  console.log(formattedTitle, url)
   return data
 }
