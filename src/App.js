@@ -6,14 +6,12 @@ import NewBook from "./Components/Books/NewBook";
 import Alert from "./Components/Books/InvalidFormAlert";
 import Search from "./Components/Sort/Search";
 import { useEffect, useState } from "react";
-// import { getBookData } from "./Services/GetBookData";
 
 function App() {
   const [view, setView] = useState("row");
   const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
-  const [searchResults, setSearchResults] = useState([]);
   const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
@@ -93,10 +91,6 @@ function App() {
     setFormIsValid(true);
   }
 
-  // let showBooks = function () {
-  //   library.map();
-  // };
-
   function sort(sorted, myLibrary) {
     console.log(sorted);
   }
@@ -112,25 +106,6 @@ function App() {
     setLibrary(updatedLibrary);
   }
 
-  // function searchBook(event, title) {
-  //   event.preventDefault()
-  //   getBookData(title).then((response) => {
-  //     // console.log(response)
-  //     for (let i = 0; i <= 5; i++) {
-  //       searchResults.push(response.docs[i].title)
-  //     }
-  //     console.log(`First 5 books ${searchResults}`)
-  //     setSearchResults(searchResults)
-  //   }).catch((error) => {
-  //     console.log(`Error while getting books from API in "App.js": ${error}`)
-  //   })
-  // }
-
-  function handleSearchInput(event) {
-    console.log(event.target.value)
-    setSearchValue(event.target.value)
-  }
-
   useEffect(() => {
     setLibrary([b1, b2, b3, b4, b5]);
   }, []);
@@ -141,10 +116,7 @@ function App() {
         <h1>Library</h1>
       </div>
       <div className="interactive">
-        <Search
-        // searchBook={searchBook}
-          searchResults={searchResults}
-          handleSearchInput={handleSearchInput}/>
+        <Search />
         <Sort setView={handleBookView} sort={sort} />
         <BookContainer
           view={view}
