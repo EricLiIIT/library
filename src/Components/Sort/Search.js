@@ -42,10 +42,10 @@ export default function SearchLibrary(props) {
           onChange={handleInput} 
           />
       </form>
-      <div className="search-results">
+      <div className={results.length > 1 ? "search-results" : ""}>
         {!error ? results.map((item, index) => {
           return (
-          <p key={`${item}_${index}`}>{item}</p>
+          <p key={`${item}_${index}`} className="title-result">{item}</p>
           )
         }) : 
         <div>No results</div>}
