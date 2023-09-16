@@ -5,6 +5,7 @@ import BookContainer from "./Components/Books/BookContainer";
 import NewBook from "./Components/Books/NewBook";
 import Alert from "./Components/Books/InvalidFormAlert";
 import Search from "./Components/Sort/Search";
+import { Book } from "./Components/Book/Book"
 import { useEffect, useState } from "react";
 
 function App() {
@@ -26,19 +27,6 @@ function App() {
 
   function handleBookView(view) {
     setView(view);
-  }
-
-  class Book {
-    constructor(key, title, author, pages, read) {
-      this.key = key;
-      this.title = title;
-      this.author = author;
-      this.pages = pages;
-      this.read = read;
-    }
-    info() {
-      return `${this.title} by ${this.author}. ${this.pages}, ${this.read}`;
-    }
   }
 
   let b1 = new Book(1, "Turtles all the way down", "Hank Green", 200, true);

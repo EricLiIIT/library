@@ -14,9 +14,9 @@ export default function SearchLibrary(props) {
       let res = []
       console.log(books)
       for (const book in books) {
-        console.log(`in for loop: ${books[book].title}`)
         res.push(books[book].title)
       }
+      console.log(res)
       setResults(res)
     }).catch((error) => {
       console.log(`Error while getting books from API in "Search.js": ${error}`)

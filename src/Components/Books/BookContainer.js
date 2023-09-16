@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "../Book/Book";
+import { BookComponent } from "../Book/Book";
 import "./BookContainer.css";
 
 export default function Books(props) {
@@ -21,7 +21,7 @@ export default function Books(props) {
     >
       {props.books.map((book, index) => {
         return (
-          <Book
+          <BookComponent
             className={props.view === "row" ? "row" : "card"}
             key={book.key}
             book={book}
