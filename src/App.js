@@ -29,23 +29,21 @@ function App() {
     setView(view);
   }
 
-  let b1 = new Book(1, "Turtles all the way down", "Hank Green", 200, true);
+  let b1 = new Book("Turtles all the way down", "Hank Green", 200, true);
   let b2 = new Book(
-    2,
     "The intelligent investor",
     "Benjamin Graham",
     500,
     false
   );
   let b3 = new Book(
-    3,
     "The Structure of Scientific Revolutions",
     "Thomas S. Khun",
     300,
     true
   );
-  let b4 = new Book(5, "One up on Wallstreet", "Peter Lynch", 400, true);
-  let b5 = new Book(6, "Clockwork Orange", "Someone", 200, false);
+  let b4 = new Book("One up on Wallstreet", "Peter Lynch", 400, true);
+  let b5 = new Book("Clockwork Orange", "Someone", 200, false);
 
   function showBookForm(book) {
     if (bookFormViewable === false) {
@@ -56,7 +54,6 @@ function App() {
   function addBook(book) {
     console.log(book);
     let newBook = new Book(
-      book.key,
       book.title,
       book.author,
       book.pages,
@@ -104,7 +101,7 @@ function App() {
         <h1>Library</h1>
       </div>
       <div className="interactive">
-        <Search />
+        <Search addBook={addBook}/>
         <Sort setView={handleBookView} sort={sort} />
         <BookContainer
           view={view}

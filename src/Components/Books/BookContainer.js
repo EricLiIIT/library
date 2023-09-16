@@ -23,7 +23,7 @@ export default function Books(props) {
         return (
           <BookComponent
             className={props.view === "row" ? "row" : "card"}
-            key={book.key}
+            key={index}
             book={book}
             view={props.view}
             handleDelete={() => handleDelete(index)}

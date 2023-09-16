@@ -2,15 +2,14 @@ import { React, useState } from "react";
 import { BiTrashAlt, BiCheckbox, BiCheckboxChecked } from "react-icons/bi";
 
 export class Book {
-  constructor(key, title, author, pages, read) {
-    this.key = key;
+  constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
   }
   info() {
-    return `${this.title} by ${this.author}. ${this.pages}, ${this.read}`;
+    return `${this.title} by ${this.author} ${this.pages}, ${this.read}`;
   }
 }
 
@@ -18,7 +17,6 @@ export function BookComponent(props) {
   function handleDelete() {
     props.handleDelete();
   }
-
   const [readStatus, setReadStatus] = useState(props.book.read)
   return (
     <div className={props.view === "row" ? "row" : "card"}>

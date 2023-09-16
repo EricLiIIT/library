@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { getBookData } from "../../Services/GetBookData";
+import { Book } from "../Book/Book"
 import "./Search.css"
 
 export default function SearchLibrary(props) {
@@ -12,11 +13,9 @@ export default function SearchLibrary(props) {
     getBookData(title).then((response) => {
       let books = response.docs
       let res = []
-      console.log(books)
       for (const book in books) {
-        res.push(books[book].title)
+        res.push(books[book])
       }
-      console.log(res)
       setResults(res)
     }).catch((error) => {
       console.log(`Error while getting books from API in "Search.js": ${error}`)
@@ -25,11 +24,25 @@ export default function SearchLibrary(props) {
     })
   }
 
-  function handleInput(event) {
+  function handleBookSearch(event) {
     search(event, event.target.value)
     setTitle(event.target.value)
   }
 
+  function generateBookObjectFromResult(result) {
+    let author = result.author_name[0] ? 
+      result.author_name[0] : "Unknown"
+    let pageCount = result.number_of_pages_median ? 
+      result.number_of_pages_median : "Unknown"
+    let book = new Book (
+      result.title,
+      author,
+      pageCount,
+      true // TODO allow user to select if they've read it or not
+    )
+    props.addBook(book)
+  }
+  
   return (
     <div className="search">
       <form onSubmit={(event) => event.preventDefault()}>
@@ -39,13 +52,16 @@ export default function SearchLibrary(props) {
           name="title"
           id="title"
           value={title}
-          onChange={handleInput} 
+          onChange={handleBookSearch} 
           />
       </form>
       <div className={results.length > 1 ? "search-results" : ""}>
         {!error ? results.map((item, index) => {
           return (
-          <p key={`${item}_${index}`} className="title-result">{item}</p>
+          <p 
+            key={`${item.title}_${index}`} 
+            className="title-result" 
+            onClick={() => generateBookObjectFromResult(item)}>{item.title}</p>
           )
         }) : 
         <div>No results</div>}
