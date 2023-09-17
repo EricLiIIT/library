@@ -21,6 +21,8 @@ function App() {
     }
   }, []);
 
+  // TODO local storage doesn't seem to retain any new books added from
+  // the search
   useEffect(() => {
     localStorage.setItem("library", JSON.stringify(library));
   }, [library]);
@@ -52,7 +54,6 @@ function App() {
   }
 
   function addBook(book) {
-    console.log(book);
     let newBook = new Book(
       book.title,
       book.author,

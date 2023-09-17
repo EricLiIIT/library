@@ -41,6 +41,9 @@ export default function SearchLibrary(props) {
       true // TODO allow user to select if they've read it or not
     )
     props.addBook(book)
+    // Clear search bar and results after adding book
+    setTitle("");
+    setResults([]);
   }
   
   return (
