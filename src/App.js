@@ -31,21 +31,29 @@ function App() {
     setView(view);
   }
 
-  let b1 = new Book("Turtles all the way down", "Hank Green", 200, true);
+  let b1 = new Book(
+    "Turtles all the way down", 
+    "Hank Green", 
+    "fiction", 
+    200, 
+    true
+  );
   let b2 = new Book(
     "The intelligent investor",
     "Benjamin Graham",
+    "Nonfiction",
     500,
     false
   );
   let b3 = new Book(
     "The Structure of Scientific Revolutions",
     "Thomas S. Khun",
+    "Nonfiction",
     300,
     true
   );
-  let b4 = new Book("One up on Wallstreet", "Peter Lynch", 400, true);
-  let b5 = new Book("Clockwork Orange", "Someone", 200, false);
+  let b4 = new Book("One up on Wallstreet", "Peter Lynch", "Nonfiction", 400, true);
+  let b5 = new Book("Clockwork Orange", "Someone", "Nonfiction", 200, false);
 
   function showBookForm(book) {
     if (bookFormViewable === false) {
@@ -57,6 +65,7 @@ function App() {
     let newBook = new Book(
       book.title,
       book.author,
+      book.subject,
       book.pages,
       book.read
     );

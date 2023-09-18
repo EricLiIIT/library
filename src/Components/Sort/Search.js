@@ -12,6 +12,7 @@ export default function SearchLibrary(props) {
     event.preventDefault()
     getBookData(title).then((response) => {
       let books = response.docs
+      console.log(books)
       let res = []
       for (const book in books) {
         res.push(books[book])
@@ -37,9 +38,11 @@ export default function SearchLibrary(props) {
     let book = new Book (
       result.title,
       author,
+      result.subject[0],
       pageCount,
       true // TODO allow user to select if they've read it or not
     )
+    console.log(book.info());
     props.addBook(book)
     // Clear search bar and results after adding book
     setTitle("");

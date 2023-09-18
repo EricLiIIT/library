@@ -54,12 +54,16 @@ button:hover {
 }
 
 .title {
-    flex: 1;
+    flex: 0.7;
     font-size: larger;
 }
 
 .author {
-    flex: 0.5;
+    flex: 0.4;
+}
+
+.subject {
+    flex: 0.4;
 }
 
 .pages {
