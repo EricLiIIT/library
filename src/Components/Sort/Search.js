@@ -61,7 +61,7 @@ export default function SearchLibrary(props) {
           onChange={handleBookSearch} 
           />
       </form>
-      <div className={results.length > 1 ? "search-results" : ""}>
+      <div className={results.length > 0 ? "search-results" : ""}>
         {title.length >= 1 && results.length ? results.map((item, index) => {
           return (
           <p 

@@ -15,12 +15,13 @@ button#search {
   border: 1px;
   border-style: solid;
   border-color: grey;
-  width: fit-content;
+  width: 15rem;
   margin-top: 1rem;
   padding: 0 0.5rem 0 0.5rem;
 }
 
 .title-result {
+  /* width:max-content; */
   border-bottom: 1px solid grey;
   cursor: pointer;
 }
