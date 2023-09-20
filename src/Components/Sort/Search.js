@@ -20,7 +20,7 @@ export default function SearchLibrary(props) {
       setResults(res)
     }).catch((error) => {
       console.log(`Error while getting books from API in "Search.js": ${error}`)
-      // If error is throw, display that there are no results
+      // If error is thrown, display that there are no results
       setError(true);
     })
   }
@@ -40,7 +40,7 @@ export default function SearchLibrary(props) {
       author,
       result.subject[0],
       pageCount,
-      true // TODO allow user to select if they've read it or not
+      false // TODO allow user to select if they've read it or not
     )
     console.log(book.info());
     props.addBook(book)
@@ -62,7 +62,7 @@ export default function SearchLibrary(props) {
           />
       </form>
       <div className={results.length > 1 ? "search-results" : ""}>
-        {!error ? results.map((item, index) => {
+        {title.length >= 1 && results.length ? results.map((item, index) => {
           return (
           <p 
             key={`${item.title}_${index}`} 
@@ -70,7 +70,9 @@ export default function SearchLibrary(props) {
             onClick={() => generateBookObjectFromResult(item)}>{item.title}</p>
           )
         }) : 
-        <div>No results</div>}
+        <div>
+          {title.length >= 1 ? <div>No results</div> : <div></div>}
+        </div>}
       </div>
     </div>
     )
