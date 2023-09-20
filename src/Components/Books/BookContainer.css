@@ -70,6 +70,10 @@ button:hover {
     flex: 0.2;
 }
 
+.author, .subject, .pages {
+    color: grey;
+}
+
 .trash {
     display: flex;
     align-items: center;
