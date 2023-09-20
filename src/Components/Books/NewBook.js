@@ -5,13 +5,14 @@ export default function NewBook(props) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [pages, setPages] = useState(0);
+  const [subject, setSubject] = useState("");
   const [read, setRead] = useState(false);
   const [formIsValid, setFormIsValid] = useState(true);
 
   function addBook() {
     if (title.length > 0 && author.length > 0 && pages > 0) {
       let key = Math.random().toString() + title + author;
-      props.add({ key, title, author, pages, read });
+      props.add({ title, author, pages, subject, read });
     } else {
       props.handleInvalidForm(formIsValid);
     }
@@ -23,7 +24,7 @@ export default function NewBook(props) {
 
   useEffect(() => {
     setFormIsValid(!formIsValid);
-  }, [title, author, pages]);
+  }, [title, author, pages, subject]);
 
   return (
     <div className="form-container">
@@ -53,6 +54,13 @@ export default function NewBook(props) {
             onChange={(event) => setPages(event.target.value)}
             value={pages}
           />
+          <label htmlFor="subject">Genre</label>
+          <input 
+            type="text"
+            name="subject"
+            id="subject"
+            onChange={(event) => setSubject(event.target.value)} 
+            value={subject}/>
           <label htmlFor="read">Did you read this book?</label>
           <input
             type="checkbox"
