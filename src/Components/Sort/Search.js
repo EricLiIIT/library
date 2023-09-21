@@ -40,7 +40,7 @@ export default function SearchLibrary(props) {
       author,
       result.subject[0],
       pageCount,
-      false // TODO allow user to select if they've read it or not
+      false
     )
     console.log(book.info());
     props.addBook(book)

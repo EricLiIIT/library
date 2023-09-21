@@ -1,12 +1,13 @@
 import "./App.css";
 import "./Components/Sort/Sort";
 import Sort from "./Components/Sort/Sort";
-import BookContainer from "./Components/Books/BookContainer";
-import NewBook from "./Components/Books/NewBook";
-import Alert from "./Components/Books/InvalidFormAlert";
+import BookContainer from "./Components/Book/BookContainer";
+import NewBook from "./Components/Book/NewBook";
+import Alert from "./Components/Book/InvalidFormAlert";
 import Search from "./Components/Sort/Search";
 import { Book } from "./Components/Book/Book"
 import { useEffect, useState } from "react";
+import { b1, b2, b3, b4, b5 } from "./Components/Book/SampleBooks"
 
 function App() {
   const [view, setView] = useState("row");
@@ -30,30 +31,6 @@ function App() {
   function handleBookView(view) {
     setView(view);
   }
-
-  let b1 = new Book(
-    "Turtles all the way down", 
-    "Hank Green", 
-    "fiction", 
-    200, 
-    true
-  );
-  let b2 = new Book(
-    "The intelligent investor",
-    "Benjamin Graham",
-    "Nonfiction",
-    500,
-    false
-  );
-  let b3 = new Book(
-    "The Structure of Scientific Revolutions",
-    "Thomas S. Khun",
-    "Nonfiction",
-    300,
-    true
-  );
-  let b4 = new Book("One up on Wallstreet", "Peter Lynch", "Nonfiction", 400, true);
-  let b5 = new Book("Clockwork Orange", "Someone", "Nonfiction", 200, false);
 
   function showBookForm(book) {
     if (bookFormViewable === false) {

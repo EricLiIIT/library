@@ -21,7 +21,6 @@ button#search {
 }
 
 .title-result {
-  /* width:max-content; */
   border-bottom: 1px solid grey;
   cursor: pointer;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { BookComponent } from "../Book/Book";
+import { BookComponent } from "./Book";
 import "./BookContainer.css";
 
 export default function Books(props) {
