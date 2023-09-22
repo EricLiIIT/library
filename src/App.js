@@ -15,18 +15,18 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
 
-  useEffect(() => {
-    const localData = localStorage.getItem("books");
-    if (localData != null) {
-      setLibrary(JSON.parse(localData));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const localData = localStorage.getItem("library");
+  //   if (localData != null) {
+  //     setLibrary(JSON.parse(localData));
+  //   }
+  // }, []);
 
   // TODO local storage doesn't seem to retain any new books added from
   // the search
-  useEffect(() => {
-    localStorage.setItem("library", JSON.stringify(library));
-  }, [library]);
+  // useEffect(() => {
+  //   localStorage.setItem("library", JSON.stringify(library));
+  // }, [library]);
 
   function handleBookView(view) {
     setView(view);
@@ -46,9 +46,12 @@ function App() {
       book.pages,
       book.read
     );
-    setLibrary((prevBooks) => {
-      return [newBook, ...prevBooks];
-    });
+    const localData = localStorage.getItem("library");
+    localStorage.setItem("library", JSON.stringify())
+
+    setLibrary([newBook, ...library]);
+    console.log(library)
+    localStorage.setItem("library", JSON.stringify(library));
 
     if (bookFormViewable === true) {
       setFormIsValid(true);
@@ -78,9 +81,13 @@ function App() {
     setLibrary(updatedLibrary);
   }
 
-  useEffect(() => {
-    setLibrary([b1, b2, b3, b4, b5]);
-  }, []);
+  function handleCheck() {
+    // update book read status
+  }
+
+  // useEffect(() => { // This might be preventing books from being saved to local storage
+  //   setLibrary([b1, b2, b3, b4, b5]);
+  // }, []);
 
   return (
     <div className="App" id="App">
@@ -101,14 +108,12 @@ function App() {
           add={addBook}
           formView={bookFormViewable}
           hideForm={hideForm}
-          handleInvalidForm={handleInvalidForm}
-          />
-          ) : null}
+          handleInvalidForm={handleInvalidForm} />
+        ) : null}
         {formIsValid ? null : (
           <Alert
             formIsValid={formIsValid}
-            handleInvalidForm={handleInvalidForm}
-          />
+            handleInvalidForm={handleInvalidForm} />
         )}
       </div>
     </div>

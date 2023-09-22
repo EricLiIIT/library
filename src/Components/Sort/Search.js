@@ -42,7 +42,6 @@ export default function SearchLibrary(props) {
       pageCount,
       false
     )
-    console.log(book.info());
     props.addBook(book)
     // Clear search bar and results after adding book
     setTitle("");
