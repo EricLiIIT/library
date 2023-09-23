@@ -15,12 +15,13 @@ function App() {
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
 
-  // useEffect(() => {
-  //   const localData = localStorage.getItem("library");
-  //   if (localData != null) {
-  //     setLibrary(JSON.parse(localData));
-  //   }
-  // }, []);
+  useEffect(() => {
+    const localData = localStorage.getItem("library");
+    console.log("Get library from local storage")
+    if (localData != null) {
+      setLibrary(JSON.parse(localData));
+    }
+  }, []);
 
   // TODO local storage doesn't seem to retain any new books added from
   // the search
@@ -46,12 +47,13 @@ function App() {
       book.pages,
       book.read
     );
-    const localData = localStorage.getItem("library");
-    localStorage.setItem("library", JSON.stringify())
+    // const localData = localStorage.getItem("library");
+    // localStorage.setItem("library", JSON.stringify())
 
-    setLibrary([newBook, ...library]);
+    setLibrary([...library, newBook]);
+    // let localData = localStorage.setItem("library", JSON.stringify(library));
     console.log(library)
-    localStorage.setItem("library", JSON.stringify(library));
+    // console.log("Local Data", localData)
 
     if (bookFormViewable === true) {
       setFormIsValid(true);
@@ -59,6 +61,11 @@ function App() {
       setBookFormViewable(false);
     }
   }
+
+  useEffect(() => {
+    let localData = localStorage.setItem("library", JSON.stringify(library));
+    console.log(localData)
+  }, [library])
 
   function hideForm() {
     setBookFormViewable(false);

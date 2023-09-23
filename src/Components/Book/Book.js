@@ -37,8 +37,10 @@ export function BookComponent(props) {
 
   return (
     <div className={props.view === "row" ? "row" : "card"}>
-      <div className="title">{props.book.title}</div>
-      <div className="author">By: {props.book.author}</div>
+      <div>
+        <div className="title">{props.book.title}</div>
+        <div className="author">By: {props.book.author}</div>
+      </div>
       <div className="subject">{props.book.subject}</div>
       <div className="pages">{props.book.pages} pages</div>
       <div className="checkbox">
