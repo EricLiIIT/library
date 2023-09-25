@@ -20,6 +20,11 @@ function App() {
     console.log("Get library from local storage")
     if (localData != null) {
       setLibrary(JSON.parse(localData));
+    } 
+    if (localData === null) {
+      console.log("Localdata is null")
+      console.log(localData)
+      setLibrary([b1, b2, b3, b4, b5]);
     }
   }, []);
 
