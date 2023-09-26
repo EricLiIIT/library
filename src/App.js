@@ -14,19 +14,35 @@ function App() {
   const [bookFormViewable, setBookFormViewable] = useState(false);
   const [library, setLibrary] = useState([]);
   const [formIsValid, setFormIsValid] = useState(true);
+  const localStorageKey = 'library';
 
   useEffect(() => {
-    const localData = localStorage.getItem("library");
-    console.log("Get library from local storage")
-    if (localData != null) {
-      setLibrary(JSON.parse(localData));
-    } 
-    if (localData === null) {
-      console.log("Localdata is null")
-      console.log(localData)
+    // const localData = localStorage.getItem("library");
+    if (localStorage.getItem(localStorageKey) == null || localStorage.getItem(localStorageKey).length > 2) {
+      // Key exists in localStorage
+      console.log("There has been books added to local storage before")
+      // console.log(`${localStorage.getItem(localStorageKey)}`)
+      const storedData = localStorage.getItem(localStorageKey)
+      if (storedData) {
+        const parsedData = JSON.parse(storedData);
+        setLibrary(parsedData);
+      }
+      // setLibrary(localStorage.getItem(localStorageKey))
+    }
+    if (localStorage.getItem(localStorageKey) == null || localStorage.getItem(localStorageKey).length < 3) {
       setLibrary([b1, b2, b3, b4, b5]);
+      localStorage.setItem("library", JSON.stringify(library));
     }
   }, []);
+
+  // useEffect(() => {
+  //   const localData = localStorage.getItem("library");
+  //   if (localData === null) {
+  //     let localData = localStorage.setItem("library", JSON.stringify(library));
+  //     console.log(localData)
+  //   }
+  // }, [library])
+
 
   // TODO local storage doesn't seem to retain any new books added from
   // the search
@@ -56,8 +72,9 @@ function App() {
     // localStorage.setItem("library", JSON.stringify())
 
     setLibrary([...library, newBook]);
-    // let localData = localStorage.setItem("library", JSON.stringify(library));
-    console.log(library)
+    console.log("Library after adding new book: ", library)
+    let localData = localStorage.setItem("library", JSON.stringify(library));
+    console.log("book should be added to localstorage", library)
     // console.log("Local Data", localData)
 
     if (bookFormViewable === true) {
@@ -65,12 +82,7 @@ function App() {
       console.log("error message should be gone if it ever appeared");
       setBookFormViewable(false);
     }
-  }
-
-  useEffect(() => {
-    let localData = localStorage.setItem("library", JSON.stringify(library));
-    console.log(localData)
-  }, [library])
+  } 
 
   function hideForm() {
     setBookFormViewable(false);

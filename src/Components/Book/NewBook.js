@@ -9,14 +9,14 @@ export default function NewBook(props) {
   const [read, setRead] = useState(false);
   const [formIsValid, setFormIsValid] = useState(true);
 
-  function addBook() {
-    if (title.length > 0 && author.length > 0 && pages > 0) {
-      let key = Math.random().toString() + title + author;
-      props.add({ title, author, pages, subject, read });
-    } else {
-      props.handleInvalidForm(formIsValid);
-    }
-  }
+  // function addBook() {
+  //   if (title.length > 0 && author.length > 0 && pages > 0) {
+  //     let key = Math.random().toString() + title + author;
+  //     props.add({ title, author, pages, subject, read });
+  //   } else {
+  //     props.handleInvalidForm(formIsValid);
+  //   }
+  // }
 
   function cancelAddBook() {
     props.hideForm(false);
@@ -72,7 +72,7 @@ export default function NewBook(props) {
           <button type="button" onClick={cancelAddBook}>
             Cancel
           </button>
-          <button type="button" onClick={addBook}>
+          <button type="button" onClick={props.add}>
             Add Book
           </button>
         </form>

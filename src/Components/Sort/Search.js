@@ -12,7 +12,7 @@ export default function SearchLibrary(props) {
     event.preventDefault()
     getBookData(title).then((response) => {
       let books = response.docs
-      console.log(books)
+      // console.log(books)
       let res = []
       for (const book in books) {
         res.push(books[book])
