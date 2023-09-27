@@ -17,17 +17,14 @@ function App() {
   const localStorageKey = 'library';
 
   useEffect(() => {
-    // const localData = localStorage.getItem("library");
-    if (localStorage.getItem(localStorageKey) == null || localStorage.getItem(localStorageKey).length > 2) {
+    const localData = localStorage.getItem(localStorageKey);
+    if (localData == null || localData.length > 2) {
       // Key exists in localStorage
       console.log("There has been books added to local storage before")
-      // console.log(`${localStorage.getItem(localStorageKey)}`)
-      const storedData = localStorage.getItem(localStorageKey)
-      if (storedData) {
-        const parsedData = JSON.parse(storedData);
+      if (localData) {
+        const parsedData = JSON.parse(localData);
         setLibrary(parsedData);
       }
-      // setLibrary(localStorage.getItem(localStorageKey))
     }
     if (localStorage.getItem(localStorageKey) == null || localStorage.getItem(localStorageKey).length < 3) {
       setLibrary([b1, b2, b3, b4, b5]);
@@ -108,10 +105,6 @@ function App() {
   function handleCheck() {
     // update book read status
   }
-
-  // useEffect(() => { // This might be preventing books from being saved to local storage
-  //   setLibrary([b1, b2, b3, b4, b5]);
-  // }, []);
 
   return (
     <div className="App" id="App">
