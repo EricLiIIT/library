@@ -16,7 +16,7 @@ export default function Books(props) {
   return (
     <div
       className={
-        props.view === "row" ? "book-container row" : "book-container card"
+        props.view === "row" ? "book-container" : "book-container card"
       }
     >
       {props.books.map((book, index) => {

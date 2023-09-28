@@ -42,7 +42,7 @@
 
 .book-container {
     display: grid;
-    padding: 5rem;
+    padding: 2rem;
     gap: 2rem;
     grid-area: book-container;
 }

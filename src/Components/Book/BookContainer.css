@@ -46,7 +46,8 @@ button:hover {
 /* row styles */
 
 .row {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
     align-items: center;
     padding: 1rem;
     border-style: solid;
