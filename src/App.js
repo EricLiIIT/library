@@ -19,7 +19,7 @@ function App() {
   useEffect(() => {
     const localData = localStorage.getItem(localStorageKey);
     try {
-      if (localData == null || localData.length > 2) {
+      if (localData == null) {
         // Key exists in localStorage
         console.log("Getting books from local storage")
         if (localData) {
@@ -30,7 +30,9 @@ function App() {
     } catch (error) {
       console.error(`Error accessing locally stored books: ${error}`)
     }
-    if (localStorage.getItem(localStorageKey) == null || localStorage.getItem(localStorageKey).length < 3) {
+    // overriding any changes made to the list of books stored to localstorage
+    if (localStorage.getItem(localStorageKey) !== null) {
+      console.log("setting default lib")
       setLibrary([b1, b2, b3, b4, b5]);
       localStorage.setItem("library", JSON.stringify(library));
     }
@@ -41,10 +43,13 @@ function App() {
   useEffect(() => {
     console.log("use effect firing because the library array was messed with")
     let jsonStringified = JSON.stringify(library)
-    console.log(jsonStringified)
-    localStorage.setItem(localStorageKey, jsonStringified);
-    console.log(library)
-    // console.log(`second console.log ${library}`)
+    // console.log(jsonStringified)
+    let prevBooks = localStorage.getItem(localStorageKey)
+    if (prevBooks !== null) {
+      localStorage.clear();
+      localStorage.setItem(localStorageKey, jsonStringified);
+    }
+    console.log(localStorage.getItem(localStorageKey))
   }, [library]);
 
   function handleBookView(view) {
