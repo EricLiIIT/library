@@ -40,7 +40,10 @@ function App() {
   // the search
   useEffect(() => {
     console.log("use effect firing because the library array was messed with")
-    localStorage.setItem(localStorageKey, JSON.stringify(library));
+    let jsonStringified = JSON.stringify(library)
+    console.log(jsonStringified)
+    localStorage.setItem(localStorageKey, jsonStringified);
+    console.log(library)
     // console.log(`second console.log ${library}`)
   }, [library]);
 

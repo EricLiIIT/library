@@ -13,8 +13,6 @@ export class Book {
     return `${this.title} by ${this.author} ${this.pages}, ${this.subject} ${this.read}`;
   }
   updateStatus() {
-    // console.log(this.read)
-    // console.log(!this.read)
     this.read = !this.read
   }
 }
