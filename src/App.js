@@ -18,39 +18,20 @@ function App() {
 
   useEffect(() => {
     const localData = localStorage.getItem(localStorageKey);
-    try {
-      if (localData == null) {
-        // Key exists in localStorage
-        console.log("Getting books from local storage")
-        if (localData) {
-          const parsedData = JSON.parse(localData);
-          setLibrary(parsedData);
-        }
-      }
-    } catch (error) {
-      console.error(`Error accessing locally stored books: ${error}`)
-    }
-    // overriding any changes made to the list of books stored to localstorage
-    if (localStorage.getItem(localStorageKey) !== null) {
-      console.log("setting default lib")
-      setLibrary([b1, b2, b3, b4, b5]);
-      localStorage.setItem("library", JSON.stringify(library));
+
+    if (localData) {
+      // Key exists in localStorage, parse and set it
+      console.log("Getting books from local storage", localData);
+      const parsedData = JSON.parse(localData);
+      setLibrary(parsedData);
+    } else {
+      // Key does not exist in localStorage, initialize with default library
+      console.log("Initializing library in local storage");
+      // const defaultLibrary = [b1, b2, b3, b4, b5]; // Replace with your default data
+      localStorage.setItem(localStorageKey, JSON.stringify([]));
+      setLibrary([]);
     }
   }, []);
-
-  // TODO local storage doesn't seem to retain any new books added from
-  // the search
-  useEffect(() => {
-    console.log("use effect firing because the library array was messed with")
-    let jsonStringified = JSON.stringify(library)
-    // console.log(jsonStringified)
-    let prevBooks = localStorage.getItem(localStorageKey)
-    if (prevBooks !== null) {
-      localStorage.clear();
-      localStorage.setItem(localStorageKey, jsonStringified);
-    }
-    console.log(localStorage.getItem(localStorageKey))
-  }, [library]);
 
   function handleBookView(view) {
     setView(view);
@@ -71,16 +52,17 @@ function App() {
       book.read
     );
 
-    setLibrary([...library, newBook]);
-    console.log("Library after adding new book: ", library)
-    localStorage.setItem(localStorageKey, JSON.stringify(library));
-    console.log("book should be added to local storage", library)
+    const updatedLibrary = [...library, newBook]
+    setLibrary(updatedLibrary);
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
 
     if (bookFormViewable === true) {
       setFormIsValid(true);
       console.log("error message should be gone if it ever appeared");
       setBookFormViewable(false);
     }
+    console.log("added book")
+    console.log(localStorage.getItem(localStorageKey))
   } 
 
   function hideForm() {
