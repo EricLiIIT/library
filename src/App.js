@@ -21,12 +21,10 @@ function App() {
 
     if (localData) {
       // Key exists in localStorage, parse and set it
-      console.log("Getting books from local storage", localData);
       const parsedData = JSON.parse(localData);
       setLibrary(parsedData);
     } else {
       // Key does not exist in localStorage, initialize with default library
-      console.log("Initializing library in local storage");
       // const defaultLibrary = [b1, b2, b3, b4, b5]; // Replace with your default data
       localStorage.setItem(localStorageKey, JSON.stringify([]));
       setLibrary([]);
@@ -43,7 +41,8 @@ function App() {
     }
   }
 
-  function addBook(book) {
+  function addBookToLibrary(book) {
+    console.log(book)
     let newBook = new Book(
       book.title,
       book.author,
@@ -51,18 +50,15 @@ function App() {
       book.pages,
       book.read
     );
-
+    console.log(newBook.info())
     const updatedLibrary = [...library, newBook]
     setLibrary(updatedLibrary);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
 
     if (bookFormViewable === true) {
       setFormIsValid(true);
-      console.log("error message should be gone if it ever appeared");
       setBookFormViewable(false);
     }
-    console.log("added book")
-    console.log(localStorage.getItem(localStorageKey))
   } 
 
   function hideForm() {
@@ -80,7 +76,6 @@ function App() {
   }
 
   function deleteBook(bookKey) {
-    console.log(`app.js: deleting ${bookKey} book`);
     const updatedLibrary = [...library];
     updatedLibrary.splice(bookKey, 1);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
@@ -97,7 +92,7 @@ function App() {
         <h1>Library</h1>
       </div>
       <div className="interactive">
-        <Search addBook={addBook}/>
+        <Search addBook={addBookToLibrary}/>
         <Sort setView={handleBookView} sort={sort} />
         <BookContainer
           view={view}
@@ -107,7 +102,7 @@ function App() {
         />
         {bookFormViewable ? (
           <NewBook
-          add={addBook}
+          addBookToLibrary={addBookToLibrary}
           formView={bookFormViewable}
           hideForm={hideForm}
           handleInvalidForm={handleInvalidForm} />

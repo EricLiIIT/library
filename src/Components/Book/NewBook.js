@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Book } from "./Book";
 import "./NewBook.css";
 
 export default function NewBook(props) {
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [pages, setPages] = useState(0);
+  const [pages, setPages] = useState("");
   const [subject, setSubject] = useState("");
   const [read, setRead] = useState(false);
   const [formIsValid, setFormIsValid] = useState(true);
@@ -22,9 +23,16 @@ export default function NewBook(props) {
     props.hideForm(false);
   }
 
-  useEffect(() => {
-    setFormIsValid(!formIsValid);
-  }, [title, author, pages, subject]);
+  function createBook() {
+    const newBook = new Book(title, author, subject, pages, read);
+    if (newBook.isValidBook) {
+      // console.log(newBook.isValidBook)
+      props.addBookToLibrary(newBook)
+    } else {
+      alert("Invalid Book!");
+    }
+    console.log(newBook)
+  }
 
   return (
     <div className="form-container">
@@ -72,7 +80,7 @@ export default function NewBook(props) {
           <button type="button" onClick={cancelAddBook}>
             Cancel
           </button>
-          <button type="button" onClick={props.add}>
+          <button type="button" onClick={createBook}>
             Add Book
           </button>
         </form>
