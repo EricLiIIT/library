@@ -9,7 +9,6 @@ export default function Books(props) {
   }
 
   function handleDelete(bookKey) {
-    console.log(bookKey);
     props.deleteBook(bookKey);
   }
 

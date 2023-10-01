@@ -26,12 +26,10 @@ export default function NewBook(props) {
   function createBook() {
     const newBook = new Book(title, author, subject, pages, read);
     if (newBook.isValidBook) {
-      // console.log(newBook.isValidBook)
       props.addBookToLibrary(newBook)
     } else {
       alert("Invalid Book!");
     }
-    console.log(newBook)
   }
 
   return (

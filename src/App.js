@@ -42,7 +42,6 @@ function App() {
   }
 
   function addBookToLibrary(book) {
-    console.log(book)
     let newBook = new Book(
       book.title,
       book.author,
@@ -50,7 +49,6 @@ function App() {
       book.pages,
       book.read
     );
-    console.log(newBook.info())
     const updatedLibrary = [...library, newBook]
     setLibrary(updatedLibrary);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
