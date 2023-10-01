@@ -83,6 +83,7 @@ function App() {
     console.log(`app.js: deleting ${bookKey} book`);
     const updatedLibrary = [...library];
     updatedLibrary.splice(bookKey, 1);
+    localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
     setLibrary(updatedLibrary);
   }
 
