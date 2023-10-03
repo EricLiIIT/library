@@ -6,7 +6,6 @@ export default function Sort(props) {
   const [rowView, setRowView] = useState(true);
 
   function getView() {
-    console.log(`${rowView}`)
     if (!rowView) {
       setRowView(!rowView)
       props.setView("row");
