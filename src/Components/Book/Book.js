@@ -43,13 +43,7 @@ export function BookComponent(props) {
   function updateReadStatus() {
     setReadStatus(!true)
   }
-
-  // useEffect(() => {
-    // setReadStatus(readStatus);
-    // props.book.updateStatus()
-    // console.log("clicked!")
-  // }, [readStatus])
-
+  
   return (
     <div className={props.view === "row" ? "row" : "card"}>
       <div>
