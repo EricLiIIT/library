@@ -41,9 +41,9 @@ export function BookComponent(props) {
   }
 
   function updateReadStatus() {
-    setReadStatus(!true)
+    props.updateReadStatus();
   }
-  
+
   return (
     <div className={props.view === "row" ? "row" : "card"}>
       <div>
@@ -56,13 +56,14 @@ export function BookComponent(props) {
         <p>Read?</p>
         {(props.book.read) ? 
           <BiCheckboxChecked size="25" onClick={() => {
-            setReadStatus(!readStatus)
-            // updateReadStatus()
+            // setReadStatus(!readStatus)
+            updateReadStatus()
             }
           }/> : 
           <BiCheckbox size="25" onClick={() => {
-            setReadStatus(!readStatus)
-            // updateReadStatus()
+            console.log("Clicked")
+            // setReadStatus(!readStatus)
+            updateReadStatus()
             }
           }/>
         }

@@ -42,14 +42,21 @@ function App() {
   }
 
   function addBookToLibrary(book) {
-    let newBook = new Book(
+    // let newBook = new Book(
+    //   book.title,
+    //   book.author,
+    //   book.subject,
+    //   book.pages,
+    //   book.read
+    // );
+    const updatedLibrary = [...library];
+    updatedLibrary.push(new Book(
       book.title,
       book.author,
       book.subject,
       book.pages,
       book.read
-    );
-    const updatedLibrary = [...library, newBook]
+    ));
     setLibrary(updatedLibrary);
     localStorage.setItem(localStorageKey, JSON.stringify(updatedLibrary));
 
@@ -80,8 +87,19 @@ function App() {
     setLibrary(updatedLibrary);
   }
 
-  function handleCheck() {
-    // update book read status
+  function updateReadStatus(bookIndex) {
+    console.log(library[bookIndex]);
+    let read = !library[bookIndex].read
+    let updatedBook = {...library[bookIndex], read}
+    library.splice(bookIndex, 1, updatedBook)
+    console.log(library);
+    // setLibrary(library)
+    // console.log(library[bookIndex].info());
+    // library[bookIndex].updateStatus();
+    // console.log(library[bookIndex].info());
+    // console.log(library[bookIndex].title)
+    // let oldLib = localStorage.getItem(localStorageKey);
+    // console.log(oldLib);
   }
 
   return (
@@ -97,6 +115,7 @@ function App() {
           books={library}
           add={showBookForm}
           deleteBook={deleteBook}
+          updateReadStatus={updateReadStatus}
         />
         {bookFormViewable ? (
           <NewBook

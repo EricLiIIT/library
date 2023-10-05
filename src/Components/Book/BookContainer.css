@@ -65,7 +65,6 @@ button:hover {
 
 .subject {
     display: flex;
-    /* justify-content: center; */
     flex: 0.4;
 }
 

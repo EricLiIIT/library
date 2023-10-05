@@ -12,6 +12,10 @@ export default function Books(props) {
     props.deleteBook(bookKey);
   }
 
+  function updateReadStatus(index) {
+    props.updateReadStatus(index);
+  }
+
   return (
     <div
       className={
@@ -25,6 +29,7 @@ export default function Books(props) {
             key={index}
             book={book}
             view={props.view}
+            updateReadStatus={() => updateReadStatus(index)}
             handleDelete={() => handleDelete(index)}
           />
         );
