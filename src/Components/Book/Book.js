@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { BiTrashAlt, BiCheckbox, BiCheckboxChecked } from "react-icons/bi";
+import { BiTrashAlt } from "react-icons/bi";
 
 export class Book {
   constructor(title, author, subject, pages, read) {
@@ -35,13 +35,14 @@ export class Book {
 }
 
 export function BookComponent(props) {
-  const [readStatus, setReadStatus] = useState(true);
+  const [readStatus, setReadStatus] = useState(props.book.read);
   function handleDelete() {
     props.handleDelete();
   }
 
   function updateReadStatus() {
     props.updateReadStatus();
+    setReadStatus(!readStatus); 
   }
 
   return (
@@ -53,20 +54,12 @@ export function BookComponent(props) {
       <div className="subject">{props.book.subject}</div>
       <div className="pages">{props.book.pages} pages</div>
       <div className="checkbox">
-        <p>Read?</p>
-        {(props.book.read) ? 
-          <BiCheckboxChecked size="25" onClick={() => {
-            // setReadStatus(!readStatus)
-            updateReadStatus()
-            }
-          }/> : 
-          <BiCheckbox size="25" onClick={() => {
-            console.log("Clicked")
-            // setReadStatus(!readStatus)
-            updateReadStatus()
-            }
-          }/>
-        }
+        {(readStatus) ? 
+          <p onClick={() => {
+            updateReadStatus()}}>Read</p> :
+          <p onClick={() => {
+            updateReadStatus()}}>Unread</p>
+          }
       </div>
       <div className="trash">
         <BiTrashAlt onClick={handleDelete} />

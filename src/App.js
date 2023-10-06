@@ -23,12 +23,7 @@ function App() {
       // Key exists in localStorage, parse and set it
       const parsedData = JSON.parse(localData);
       setLibrary(parsedData);
-    } else {
-      // Key does not exist in localStorage, initialize with default library
-      // const defaultLibrary = [b1, b2, b3, b4, b5]; // Replace with your default data
-      localStorage.setItem(localStorageKey, JSON.stringify([]));
-      setLibrary([]);
-    }
+    } 
   }, []);
 
   function handleBookView(view) {
@@ -42,13 +37,6 @@ function App() {
   }
 
   function addBookToLibrary(book) {
-    // let newBook = new Book(
-    //   book.title,
-    //   book.author,
-    //   book.subject,
-    //   book.pages,
-    //   book.read
-    // );
     const updatedLibrary = [...library];
     updatedLibrary.push(new Book(
       book.title,
@@ -88,18 +76,11 @@ function App() {
   }
 
   function updateReadStatus(bookIndex) {
-    console.log(library[bookIndex]);
     let read = !library[bookIndex].read
     let updatedBook = {...library[bookIndex], read}
     library.splice(bookIndex, 1, updatedBook)
-    console.log(library);
-    // setLibrary(library)
-    // console.log(library[bookIndex].info());
-    // library[bookIndex].updateStatus();
-    // console.log(library[bookIndex].info());
-    // console.log(library[bookIndex].title)
-    // let oldLib = localStorage.getItem(localStorageKey);
-    // console.log(oldLib);
+    setLibrary(library)
+    localStorage.setItem(localStorageKey, JSON.stringify(library))
   }
 
   return (
