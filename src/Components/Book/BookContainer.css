@@ -72,7 +72,11 @@ button:hover {
     flex: 0.2;
 }
 
-.author, .subject, .pages {
+.readStatus {
+    cursor: pointer;
+}
+
+.author, .subject, .pages, .readStatus {
     color: grey;
 }
 

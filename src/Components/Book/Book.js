@@ -17,7 +17,7 @@ export class Book {
     if (!/^[0-9]*$/.test(this.pages)) {
       return false;
     }
-    for (const [_, value] of Object.entries(this)) {
+    for (const [, value] of Object.entries(this)) {
       if (value !== "") {
         continue
       } else {
@@ -53,7 +53,7 @@ export function BookComponent(props) {
       </div>
       <div className="subject">{props.book.subject}</div>
       <div className="pages">{props.book.pages} pages</div>
-      <div className="checkbox">
+      <div className="readStatus">
         {(readStatus) ? 
           <p onClick={() => {
             updateReadStatus()}}>Read</p> :
