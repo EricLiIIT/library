@@ -7,7 +7,6 @@ import Alert from "./Components/Book/InvalidFormAlert";
 import Search from "./Components/Sort/Search";
 import { Book } from "./Components/Book/Book"
 import { useEffect, useState } from "react";
-import { b1, b2, b3, b4, b5 } from "./Components/Book/SampleBooks"
 
 function App() {
   const [view, setView] = useState("row");
@@ -59,11 +58,6 @@ function App() {
     setFormIsValid(true);
   }
 
-  function sort(sorted, myLibrary) {
-    // Unimplemented: todo - sort books
-    console.log(sorted);
-  }
-
   function handleInvalidForm(formValidity) {
     setFormIsValid(formValidity);
   }
@@ -90,7 +84,7 @@ function App() {
       </div>
       <div className="interactive">
         <Search addBook={addBookToLibrary}/>
-        <Sort setView={handleBookView} sort={sort} />
+        <Sort setView={handleBookView} />
         <BookContainer
           view={view}
           books={library}

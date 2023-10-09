@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Book } from "./Book";
 import "./NewBook.css";
+import { click } from "@testing-library/user-event/dist/click";
 
 export default function NewBook(props) {
   const [title, setTitle] = useState("");
@@ -8,20 +9,28 @@ export default function NewBook(props) {
   const [pages, setPages] = useState("");
   const [subject, setSubject] = useState("");
   const [read, setRead] = useState(false);
-  const [formIsValid, setFormIsValid] = useState(true);
-
-  // function addBook() {
-  //   if (title.length > 0 && author.length > 0 && pages > 0) {
-  //     let key = Math.random().toString() + title + author;
-  //     props.add({ title, author, pages, subject, read });
-  //   } else {
-  //     props.handleInvalidForm(formIsValid);
-  //   }
-  // }
 
   function cancelAddBook() {
     props.hideForm(false);
   }
+
+  const formParentContainer = document.querySelector(".form-container");
+  const form = document.getElementsByClassName("add-book-form");
+  const bookList = document.querySelector(".book-container");
+  const body = document.body;
+  bookList.addEventListener("click", (event) => {
+      cancelAddBook();
+  });
+  document.addEventListener("click", event => {
+    console.log("Clicked")
+    // if (event.target !== formParentContainer || event.target !== form) {
+      let clickInsideBody = body.contains(event.target);
+
+      if (!clickInsideBody) {
+        cancelAddBook();
+      }
+    // }
+  })
 
   function createBook() {
     const newBook = new Book(title, author, subject, pages, read);

@@ -55,7 +55,7 @@ export default function SearchLibrary(props) {
         <input 
           type="search"
           name="title"
-          id="title"
+          id="search-title"
           value={title}
           onChange={handleBookSearch} 
           />
